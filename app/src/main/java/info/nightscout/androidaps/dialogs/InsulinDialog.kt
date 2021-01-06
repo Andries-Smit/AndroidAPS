@@ -2,6 +2,7 @@ package info.nightscout.androidaps.dialogs
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,8 +22,8 @@ import info.nightscout.androidaps.db.TempTarget
 import info.nightscout.androidaps.interfaces.ActivePluginProvider
 import info.nightscout.androidaps.interfaces.CommandQueueProvider
 import info.nightscout.androidaps.interfaces.Constraint
-import info.nightscout.androidaps.plugins.configBuilder.ConstraintChecker
 import info.nightscout.androidaps.interfaces.ProfileFunction
+import info.nightscout.androidaps.plugins.configBuilder.ConstraintChecker
 import info.nightscout.androidaps.queue.Callback
 import info.nightscout.androidaps.utils.*
 import info.nightscout.androidaps.utils.alertDialogs.OKDialog
@@ -119,6 +120,12 @@ class InsulinDialog : DialogFragmentWithDate() {
             overview_insulin_amount.value = max(0.0, overview_insulin_amount.value
                 + sp.getDouble(resourceHelper.gs(R.string.key_insulin_button_increment_3), PLUS3_DEFAULT))
             validateInputs()
+        }
+        overview_insulin_help.setOnClickListener {
+            val url = resourceHelper.gs(R.string.dialog_insulin_help_url)
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
         }
 
         overview_insulin_time_layout.visibility = View.GONE

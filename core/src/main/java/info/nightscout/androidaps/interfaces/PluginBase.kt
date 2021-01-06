@@ -27,6 +27,9 @@ abstract class PluginBase(
     open val menuIcon: Int
         get() = pluginDescription.pluginIcon
 
+    open val helpUrl: String
+        get() = if (pluginDescription.helpUrl == -1) "" else resourceHelper.gs(pluginDescription.helpUrl)
+
     open val name: String
         get() = if (pluginDescription.pluginName == -1) "UNKNOWN" else resourceHelper.gs(pluginDescription.pluginName)
 

@@ -9,6 +9,7 @@ public class PluginDescription {
     boolean showInList = true;
     int pluginName = -1;
     int shortName = -1;
+    int helpUrl = -1;
     int description = -1;
     int preferencesId = -1;
     public boolean enableByDefault = false;
@@ -58,6 +59,11 @@ public class PluginDescription {
 
     public PluginDescription shortName(int shortName) {
         this.shortName = shortName;
+        return this;
+    }
+
+    public PluginDescription helpUrl(int helpUrl) {
+        this.helpUrl = helpUrl;
         return this;
     }
 

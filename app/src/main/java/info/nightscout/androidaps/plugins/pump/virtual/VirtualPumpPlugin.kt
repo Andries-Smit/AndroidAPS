@@ -63,6 +63,7 @@ class VirtualPumpPlugin @Inject constructor(
     .shortName(R.string.virtualpump_shortname)
     .preferencesId(R.xml.pref_virtualpump)
     .description(R.string.description_pump_virtual)
+    .helpUrl(R.string.plugin_virtualPump_help_url)
     .setDefault(),
     injector, aapsLogger, resourceHelper, commandQueue
 ), PumpInterface {

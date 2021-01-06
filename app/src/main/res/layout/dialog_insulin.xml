@@ -39,6 +39,16 @@
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
+            <ImageButton
+                android:id="@+id/overview_insulin_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@null"
+                android:padding="12dp"
+                android:contentDescription="@string/help_button_description"
+                android:src="@drawable/ic_help_outline" />
+
         </RelativeLayout>
 
         <LinearLayout

@@ -45,7 +45,8 @@ class OverviewPlugin @Inject constructor(
     .pluginName(R.string.overview)
     .shortName(R.string.overview_shortname)
     .preferencesId(R.xml.pref_overview)
-    .description(R.string.description_overview),
+    .description(R.string.description_overview)
+    .helpUrl(R.string.plugin_overview_help_url),
     aapsLogger, resourceHelper, injector
 ), OverviewInterface {
 
