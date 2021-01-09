@@ -14,12 +14,14 @@ import info.nightscout.androidaps.plugins.general.maintenance.ImportExportPrefs
 import info.nightscout.androidaps.plugins.general.maintenance.PrefsFileContract
 import info.nightscout.androidaps.utils.locale.LocaleHelper
 import info.nightscout.androidaps.utils.protection.ProtectionCheck
+import info.nightscout.androidaps.utils.resources.ResourceHelper
 import javax.inject.Inject
 
 class SingleFragmentActivity : DaggerAppCompatActivity() {
     @Inject lateinit var pluginStore: PluginStore
     @Inject lateinit var protectionCheck: ProtectionCheck
     @Inject lateinit var importExportPrefs: ImportExportPrefs
+    @Inject lateinit var resourceHelper: ResourceHelper
 
     private var plugin: PluginBase? = null
 
@@ -55,7 +57,7 @@ class SingleFragmentActivity : DaggerAppCompatActivity() {
             return true
         } else if (item.itemId == R.id.nav_plugin_help) {
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(plugin?.helpUrl)
+            intent.data = plugin?.helpUrl
             startActivity(intent)
             return true
         }
@@ -68,7 +70,7 @@ class SingleFragmentActivity : DaggerAppCompatActivity() {
             val menuItem = menu.findItem(R.id.nav_plugin_preferences);
             menuItem.setVisible(false);
         }
-        if (plugin?.helpUrl == "") {
+        if (plugin?.helpUrl == null) {
             val menuItem = menu.findItem(R.id.nav_plugin_help);
             menuItem.setVisible(false);
         }

@@ -1,5 +1,7 @@
 package info.nightscout.androidaps.interfaces;
 
+import android.net.Uri;
+
 public class PluginDescription {
     PluginType mainType = PluginType.GENERAL;
     String fragmentClass = null;
@@ -9,7 +11,7 @@ public class PluginDescription {
     boolean showInList = true;
     int pluginName = -1;
     int shortName = -1;
-    int helpUrl = -1;
+    Uri helpUrl = null;
     int description = -1;
     int preferencesId = -1;
     public boolean enableByDefault = false;
@@ -62,7 +64,7 @@ public class PluginDescription {
         return this;
     }
 
-    public PluginDescription helpUrl(int helpUrl) {
+    public PluginDescription helpUrl(Uri helpUrl) {
         this.helpUrl = helpUrl;
         return this;
     }

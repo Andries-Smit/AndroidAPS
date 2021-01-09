@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Rect
-import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.text.SpannableString
@@ -164,7 +163,7 @@ class MainActivity : NoSplashAppCompatActivity() {
 
     private fun checkPluginPreferences(viewPager: ViewPager2) {
         if (viewPager.currentItem >= 0) pluginPreferencesMenuItem?.isEnabled = (viewPager.adapter as TabPageAdapter).getPluginAt(viewPager.currentItem).preferencesId != -1
-        if (viewPager.currentItem >= 0) pluginHelpMenuItem?.isEnabled = (viewPager.adapter as TabPageAdapter).getPluginAt(viewPager.currentItem).helpUrl != ""
+        if (viewPager.currentItem >= 0) pluginHelpMenuItem?.isEnabled = (viewPager.adapter as TabPageAdapter).getPluginAt(viewPager.currentItem).helpUrl != null
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
@@ -372,7 +371,7 @@ class MainActivity : NoSplashAppCompatActivity() {
             R.id.nav_plugin_help -> {
                 val plugin = (main_pager.adapter as TabPageAdapter).getPluginAt(main_pager.currentItem)
                 val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(plugin.helpUrl)
+                intent.data = plugin.helpUrl
                 startActivity(intent)
                 return true
             }

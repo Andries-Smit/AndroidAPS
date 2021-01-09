@@ -2,7 +2,6 @@ package info.nightscout.androidaps.dialogs
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -30,8 +29,10 @@ import info.nightscout.androidaps.utils.alertDialogs.OKDialog
 import info.nightscout.androidaps.utils.extensions.formatColor
 import info.nightscout.androidaps.utils.extensions.toSignedString
 import info.nightscout.androidaps.utils.extensions.toVisibility
+import info.nightscout.androidaps.utils.Documentation.getHelpUri
 import info.nightscout.androidaps.utils.resources.ResourceHelper
 import kotlinx.android.synthetic.main.dialog_insulin.*
+import kotlinx.android.synthetic.main.help_button_dialog.*
 import kotlinx.android.synthetic.main.notes.*
 import kotlinx.android.synthetic.main.okcancel.*
 import java.text.DecimalFormat
@@ -122,9 +123,8 @@ class InsulinDialog : DialogFragmentWithDate() {
             validateInputs()
         }
         overview_insulin_help.setOnClickListener {
-            val url = resourceHelper.gs(R.string.dialog_insulin_help_url)
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
+            intent.data = getHelpUri(resourceHelper, R.string.dialog_insulin_help_url)
             startActivity(intent)
         }
 

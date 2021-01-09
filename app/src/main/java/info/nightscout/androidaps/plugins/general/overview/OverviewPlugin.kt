@@ -15,6 +15,7 @@ import info.nightscout.androidaps.plugins.bus.RxBusWrapper
 import info.nightscout.androidaps.plugins.general.overview.events.EventDismissNotification
 import info.nightscout.androidaps.plugins.general.overview.events.EventNewNotification
 import info.nightscout.androidaps.plugins.general.overview.notifications.NotificationStore
+import info.nightscout.androidaps.utils.Documentation.getHelpUri
 import info.nightscout.androidaps.utils.FabricPrivacy
 import info.nightscout.androidaps.utils.extensions.plusAssign
 import info.nightscout.androidaps.utils.extensions.*
@@ -46,7 +47,7 @@ class OverviewPlugin @Inject constructor(
     .shortName(R.string.overview_shortname)
     .preferencesId(R.xml.pref_overview)
     .description(R.string.description_overview)
-    .helpUrl(R.string.plugin_overview_help_url),
+    .helpUrl(getHelpUri(resourceHelper, R.string.plugin_overview_help_url)),
     aapsLogger, resourceHelper, injector
 ), OverviewInterface {
 
