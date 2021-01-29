@@ -56,12 +56,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
+        tag_name: v2.8.2
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
+        commitish: master
     - name: Upload Release Asset
-      id: upload-release-asset 
+      id: upload_release_asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -70,3 +71,10 @@ jobs:
         asset_path: ${{ steps.sign_app.outputs.signedReleaseFile }}
         asset_name: app-full-release-signed.apk
         asset_content_type: application/zip
+    - name: Send Push Notification
+      uses: techulus/push-github-action@1.0.0
+      env:
+        API_KEY: ${{ secrets.API_KEY_PUSH }}
+        MESSAGE: "New build is available of Android APS, click the link for download"
+        TITLE: "A New Android APS"
+        LINK: ${{ steps.upload_release_asset.outputs.browser_download_url}}
