@@ -12,29 +12,61 @@ jobs:
     name: Sync main with upstream latest
 
     steps:
-    # Step 1: run a standard checkout action, provided by github
     - name: Checkout main
       uses: actions/checkout@v2
       with:
         ref: master
-        # submodules: 'recursive'     ### may be needed in your situation
 
-    # Step 2: run this sync action - specify the upstream repo, upstream branch to sync with, and target sync branch
-    - name: Pull (Fast-Forward) upstream changes
-      id: sync
-      uses: aormsby/Fork-Sync-With-Upstream-action@v2.1
+    - name: Use Java8
+      uses: actions/setup-java@v1
       with:
-        upstream_repository: nightscout/AndroidAPS
-        upstream_branch: master
-        target_branch: master
-        git_pull_args: --ff-only                    # optional arg use, defaults to simple 'pull'
-        github_token: ${{ secrets.GITHUB_TOKEN }}   # optional, for accessing repos that require authentication
+        java-version: 1.8
+    
+    - name: Install NDK
+      run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.1.6352462" --sdk_root=${ANDROID_SDK_ROOT}
 
-    # Step 3: Display a message if 'sync' step had new commits (simple test)
-    - name: Check for new commits
-      if: steps.sync.outputs.has_new_commits
-      run: echo "There were new commits."
+    - name: Build release apk
+      run: ./gradlew :app:assembleFullRelease --stacktrace
+    
+    - name: List files build
+      run: |
+        cd app/build/outputs
+        ls -LR
 
-    # Step 4: Print a helpful timestamp for your records (not required, just nice)
-    - name: Timestamp
-      run: date
+    - uses: r0adkll/sign-android-release@v1
+      name: Sign app APK
+      id: sign_app
+      with:
+        releaseDirectory: app/build/outputs/apk/full/release
+        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+        alias: ${{ secrets.ALIAS }}
+        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+      env:
+        BUILD_TOOLS_VERSION: "30.0.2"
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Signed app bundle
+        path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+        asset_name: app-full-release-signed.apk
+        asset_content_type: application/zip
