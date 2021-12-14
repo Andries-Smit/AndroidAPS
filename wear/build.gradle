@@ -49,7 +49,7 @@ def generateGitBuild = { ->
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "info.nightscout.androidaps"
