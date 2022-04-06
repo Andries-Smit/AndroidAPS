@@ -8,6 +8,7 @@
         <item name="dialogTitleBackground">@color/dialog_title_background</item>
         <item name="dialogTitleColor">@color/dialog_title_color</item>
         <item name="dialogTitleIconTint">@color/dialog_title_icon_tint</item>
+        <item name="actionBarTheme">@style/DarkActionBar</item>
         <!-- New MaterialComponents attributes. -->
         <item name="colorSecondary">@color/secondaryColorDefault</item>
         <item name="colorPrimaryVariant">@color/primaryLightColorDefault</item>
@@ -226,6 +227,11 @@
         <!-- CardView specific colors  -->
         <item name="strokeColor">@color/plastic_grey</item>
         <item name="textAppearancemediumColor">@color/textAppearancemediumDark</item>
+    </style>
+
+    <style name="DarkActionBar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="android:background">@color/black</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
 
     <style name="Theme.MaterialComponents.DayNight.DarkActionBar" parent="Theme.MaterialComponents.DayNight.Bridge"/>
