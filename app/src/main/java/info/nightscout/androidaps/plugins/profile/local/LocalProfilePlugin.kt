@@ -281,7 +281,7 @@ class LocalProfilePlugin @Inject constructor(
                 isEdited = false
                 createAndStoreConvertedProfile()
                 aapsLogger.debug(LTag.PROFILE, "Accepted ${profiles.size} profiles")
-                rxBus.send(EventLocalProfileChanged())
+                rxBus.send(EventLocalProfileChanged("LOCAL_PROFILE_PLUGIN"))
             } else
                 aapsLogger.debug(LTag.PROFILE, "ProfileStore not accepted")
         } catch (e: Exception) {

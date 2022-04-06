@@ -21,15 +21,12 @@ class EditActionDialog : DialogFragmentWithDate() {
 
     private var action: Action? = null
     private var actionPosition: Int = -1
-
     private var _binding: AutomationDialogActionBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // load data from bundle
         (savedInstanceState ?: arguments)?.let { bundle ->
             actionPosition = bundle.getInt("actionPosition", -1)
@@ -63,5 +60,10 @@ class EditActionDialog : DialogFragmentWithDate() {
             savedInstanceState.putInt("actionPosition", actionPosition)
             savedInstanceState.putString("action", it.toJSON())
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

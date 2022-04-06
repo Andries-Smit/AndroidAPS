@@ -147,7 +147,7 @@ class ProfileHelperActivity : NoSplashAppCompatActivity() {
                                     .replace(".", "/")
                         )
                     )
-                    rxBus.send(EventLocalProfileChanged())
+                    rxBus.send(EventLocalProfileChanged("PROFILE_HELPER"))
                 })
             }
         }

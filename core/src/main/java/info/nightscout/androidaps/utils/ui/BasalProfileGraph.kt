@@ -38,6 +38,7 @@ class BasalProfileGraph : GraphView {
         viewport.setMinY(0.0)
         viewport.setMaxY(Round.ceilTo(profile.getMaxDailyBasal() * 1.1, 0.5))
         gridLabelRenderer.numHorizontalLabels = 13
+        gridLabelRenderer.labelVerticalWidth = 80
         gridLabelRenderer.verticalLabelsColor = basalSeries.color
 
         val nf: NumberFormat = NumberFormat.getInstance()

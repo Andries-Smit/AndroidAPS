@@ -1,6 +1,7 @@
 package info.nightscout.androidaps.utils
 
 import java.math.BigDecimal
+import java.math.RoundingMode
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -29,4 +30,13 @@ object Round {
     @JvmStatic
     fun isSame(d1: Double, d2: Double): Boolean =
         abs(d1 - d2) <= 0.000001
+
+    @JvmStatic
+    fun roundUp(number: Double, decimals: Int): Double =
+        number.toBigDecimal().setScale(decimals, RoundingMode.UP).toDouble()
+
+    @JvmStatic
+    fun roundDown(number: Double, decimals: Int): Double =
+        number.toBigDecimal().setScale(decimals, RoundingMode.DOWN).toDouble()
+
 }

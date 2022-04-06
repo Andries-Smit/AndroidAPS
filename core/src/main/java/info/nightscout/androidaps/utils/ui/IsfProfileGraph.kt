@@ -41,7 +41,7 @@ class IsfProfileGraph : GraphView {
         val maxY = Round.ceilTo(maxIsf * 1.1, 0.5)
         viewport.setMaxY(maxY)
         gridLabelRenderer.numHorizontalLabels = 13
-        gridLabelRenderer.labelVerticalWidth = 40
+        gridLabelRenderer.labelVerticalWidth = 80
         gridLabelRenderer.verticalLabelsColor = isfSeries.color
 
         val nf: NumberFormat = NumberFormat.getInstance()

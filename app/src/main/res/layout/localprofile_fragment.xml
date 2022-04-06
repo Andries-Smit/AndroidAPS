@@ -123,201 +123,45 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dia_short" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ic_short" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/isf_short" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/basal_short" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/target_short" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:weightSum="5">
-
-                <TextView
-                    android:id="@+id/dia_tab"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/dia_short"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/ic_tab"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/ic_short"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/isf_tab"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/isf_short"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/basal_tab"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/basal_short"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/target_tab"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/target_short"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/dia_placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/dia_long_label"
-                    android:textSize="20sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp">
-
-                    <TextView
-                        android:id="@+id/dia_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/dia"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <info.nightscout.androidaps.utils.ui.NumberPicker
-                        android:id="@+id/dia"
-                        android:layout_width="130dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:customContentDescription="@string/dia" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/hours"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                </LinearLayout>
-
-                <info.nightscout.androidaps.plugins.insulin.ActivityGraph
-                    android:id="@+id/insulin_graph"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dip"
-                    android:layout_margin="20dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/ic_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical" />
-
-                <info.nightscout.androidaps.utils.ui.IcProfileGraph
-                    android:id="@+id/ic_graph"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dip"
-                    android:layout_margin="20dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/isf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/isf_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical" />
-
-                <info.nightscout.androidaps.utils.ui.IsfProfileGraph
-                    android:id="@+id/isf_graph"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dip"
-                    android:layout_margin="20dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/basal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/basal_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical" />
-
-                <info.nightscout.androidaps.utils.ui.BasalProfileGraph
-                    android:id="@+id/basal_graph"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dip"
-                    android:layout_margin="20dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/target"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/target_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical" />
-
-                <info.nightscout.androidaps.utils.ui.TargetBgProfileGraph
-                    android:id="@+id/target_graph"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dip"
-                    android:layout_margin="20dp" />
-
-            </LinearLayout>
+                android:paddingTop="10dp"
+                tools:layout_height="200dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/profileswitch"
@@ -369,6 +213,7 @@
                     android:text="@string/save"
                     app:icon="@drawable/ic_local_save"
                     app:iconTint="@color/ic_local_save" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -376,5 +221,3 @@
     </LinearLayout>
 
 </ScrollView>
-
-

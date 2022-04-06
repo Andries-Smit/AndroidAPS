@@ -245,7 +245,7 @@ class TreatmentsProfileSwitchFragment : DaggerFragment() {
                                         profileSwitch.getCustomizedName() + " " + dateUtil.dateAndTimeString(profileSwitch.timestamp).replace(".", "_")
                                     )
                                 )
-                                rxBus.send(EventLocalProfileChanged())
+                                rxBus.send(EventLocalProfileChanged("PROFILE_SWITCH"))
                             })
                     }
                 }

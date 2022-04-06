@@ -26,6 +26,11 @@ import info.nightscout.androidaps.plugins.pump.virtual.VirtualPumpFragment
 import info.nightscout.androidaps.plugins.source.BGSourceFragment
 import info.nightscout.androidaps.activities.fragments.*
 import info.nightscout.androidaps.plugins.general.automation.dialogs.*
+import info.nightscout.androidaps.plugins.profile.local.fragments.LocalProfileBasalFragment
+import info.nightscout.androidaps.plugins.profile.local.fragments.LocalProfileDiaFragment
+import info.nightscout.androidaps.plugins.profile.local.fragments.LocalProfileIcFragment
+import info.nightscout.androidaps.plugins.profile.local.fragments.LocalProfileIsfFragment
+import info.nightscout.androidaps.plugins.profile.local.fragments.LocalProfileTargetFragment
 import info.nightscout.androidaps.utils.protection.PasswordCheck
 
 @Module
@@ -43,6 +48,11 @@ abstract class FragmentsModule {
     @ContributesAndroidInjector abstract fun contributesFoodFragment(): FoodFragment
     @ContributesAndroidInjector abstract fun contributesInsulinFragment(): InsulinFragment
     @ContributesAndroidInjector abstract fun contributesLocalProfileFragment(): LocalProfileFragment
+    @ContributesAndroidInjector abstract fun contributesLocalProfileBasalFragment(): LocalProfileBasalFragment
+    @ContributesAndroidInjector abstract fun contributesLocalProfileDiaFragment(): LocalProfileDiaFragment
+    @ContributesAndroidInjector abstract fun contributesLocalProfileIcFragment(): LocalProfileIcFragment
+    @ContributesAndroidInjector abstract fun contributesLocalProfileIsfFragment(): LocalProfileIsfFragment
+    @ContributesAndroidInjector abstract fun contributesLocalProfileTargetFragment(): LocalProfileTargetFragment
     @ContributesAndroidInjector abstract fun contributesObjectivesFragment(): ObjectivesFragment
     @ContributesAndroidInjector abstract fun contributesOpenAPSAMAFragment(): OpenAPSAMAFragment
     @ContributesAndroidInjector abstract fun contributesOpenAPSSMBFragment(): OpenAPSSMBFragment
