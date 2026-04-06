@@ -187,10 +187,11 @@ class OmnipodDashPumpPlugin @Inject constructor(
     private fun updatePodWarnings() {
         if (System.currentTimeMillis() > nextPodWarningCheck) {
             if (!podStateManager.isPodRunning) {
-                uiInteraction.addNotification(
+                uiInteraction.addNotificationWithSound(
                     Notification.OMNIPOD_POD_NOT_ATTACHED,
                     rh.gs(app.aaps.pump.omnipod.common.R.string.omnipod_common_pod_status_no_active_pod),
-                    Notification.NORMAL
+                    Notification.URGENT,
+                    app.aaps.core.ui.R.raw.alarm
                 )
             } else {
                 rxBus.send(EventDismissNotification(Notification.OMNIPOD_POD_NOT_ATTACHED))

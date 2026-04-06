@@ -412,7 +412,7 @@ class OmnipodErosPumpPlugin @Inject constructor(
     private fun updatePodWarningNotifications() {
         if (System.currentTimeMillis() > this.nextPodWarningCheck) {
             if (!podStateManager.isPodRunning) {
-                uiInteraction.addNotification(Notification.OMNIPOD_POD_NOT_ATTACHED, rh.gs(app.aaps.pump.omnipod.common.R.string.omnipod_common_error_pod_not_attached), Notification.NORMAL)
+                uiInteraction.addNotificationWithSound(Notification.OMNIPOD_POD_NOT_ATTACHED, rh.gs(app.aaps.pump.omnipod.common.R.string.omnipod_common_error_pod_not_attached), Notification.URGENT, app.aaps.core.ui.R.raw.alarm)
             } else {
                 rxBus.send(EventDismissNotification(Notification.OMNIPOD_POD_NOT_ATTACHED))
 
